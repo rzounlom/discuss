@@ -6,6 +6,6 @@ export async function signIn() {
   return auth.signIn("github");
 }
 
-export async function signout() {
+export async function signOut() {
   return auth.signOut();
 }
