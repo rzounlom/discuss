@@ -4,13 +4,13 @@ import * as actions from "@/actions";
 
 import {
   Avatar,
-  Button,
   NavbarItem,
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@nextui-org/react";
 
+import FormButton from "./common/form-button";
 import { useSession } from "next-auth/react";
 
 export default function HeaderAuth() {
@@ -23,12 +23,17 @@ export default function HeaderAuth() {
     authContent = (
       <Popover placement="left">
         <PopoverTrigger>
-          <Avatar src={session.data.user.image || ""} />
+          <Avatar
+            className="hover:cursor-pointer"
+            src={session.data.user.image || ""}
+          />
         </PopoverTrigger>
         <PopoverContent>
           <div className="p-4">
             <form action={actions.signOut}>
-              <Button type="submit">Sign Out</Button>
+              <FormButton color="danger" variant="bordered">
+                Sign Out
+              </FormButton>
             </form>
           </div>
         </PopoverContent>
@@ -39,17 +44,17 @@ export default function HeaderAuth() {
       <>
         <NavbarItem>
           <form action={actions.signIn}>
-            <Button type="submit" color="secondary" variant="bordered">
+            <FormButton color="secondary" variant="bordered">
               Sign In
-            </Button>
+            </FormButton>
           </form>
         </NavbarItem>
 
         <NavbarItem>
           <form action={actions.signIn}>
-            <Button type="submit" color="primary" variant="flat">
+            <FormButton color="primary" variant="flat">
               Sign Up
-            </Button>
+            </FormButton>
           </form>
         </NavbarItem>
       </>

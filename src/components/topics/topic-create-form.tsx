@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 
 import { FC } from "react";
+import FormButton from "../common/form-button";
 import { useFormState } from "react-dom";
 
 interface TopicCreateFormProps {}
@@ -51,7 +52,7 @@ const TopicCreateForm: FC<TopicCreateFormProps> = ({}) => {
                 {formState.errors._form?.join(", ")}
               </div>
             ) : null}
-            <Button type="submit">Submit</Button>
+            <FormButton>Submit</FormButton>
           </div>
         </form>
       </PopoverContent>
