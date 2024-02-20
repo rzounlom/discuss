@@ -21,3 +21,21 @@ export function fethPostsByTopicSlug(slug: string): Promise<PostWIthData[]> {
     },
   });
 }
+
+export function fetchTopPosts(): Promise<PostWIthData[]> {
+  return db.post.findMany({
+    orderBy: [
+      {
+        comments: {
+          _count: "desc",
+        },
+      },
+    ],
+    include: {
+      topic: { select: { slug: true } },
+      user: { select: { name: true, image: true } },
+      _count: { select: { comments: true } },
+    },
+    take: 4,
+  });
+}
