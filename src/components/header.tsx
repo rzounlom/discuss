@@ -1,5 +1,4 @@
 import {
-  Input,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -8,6 +7,8 @@ import {
 
 import HeaderAuth from "./header-auth";
 import Link from "next/link";
+import SeachInput from "./search-input";
+import { Suspense } from "react";
 
 export default function Header() {
   return (
@@ -19,7 +20,9 @@ export default function Header() {
       </NavbarBrand>
       <NavbarContent justify="center">
         <NavbarItem>
-          <Input />
+          <Suspense>
+            <SeachInput />
+          </Suspense>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
